@@ -22,6 +22,7 @@ const Profile = () => {
   
   const styleButton = {
     margin: "3em",
+    float: "right"
   }
   const avatarContainer = {
     display: 'flex',
