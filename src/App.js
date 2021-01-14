@@ -9,6 +9,7 @@ import {
 import Connexion from './components/Connexion';
 import Home from './components/Home';
 import Inscription from './components/Inscription';
+
 import './App.css';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path="/connexion">
