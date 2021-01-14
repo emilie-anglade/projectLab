@@ -10,8 +10,8 @@ namespace APIhackArtilect
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Mail { get; set; }
-        public Dictionary<string, bool> Skills { get; set; }
-        public Dictionary<string, bool> Interests { get; set; }
+        public ICollection<DomainType> Skills { get; set; }
+        public ICollection<DomainType> Interests { get; set; }
         public List<Projects> ProjectsList { get; set; }
         public string DreamProject { get; set; }
     }

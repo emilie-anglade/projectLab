@@ -19,7 +19,16 @@ namespace APIhackArtilect
     
     }
     public enum DomainType
-    { Automatic,
-      Electronic,
+    { Biologie,
+      Drone,
+      Electronique,
+      Couture,
+      Design,
+      Machines,
+      Musique,
+      Robotique,
+      Architecture,
+      Media,
+      CosplayLab,
     }
 }
