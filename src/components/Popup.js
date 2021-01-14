@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from './Checkbox';
 import { useHistory } from "react-router-dom";
 import { Modal } from 'react-bootstrap';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 
 function PopupProject(props) {
   const history = useHistory();
@@ -37,9 +37,24 @@ function PopupProject(props) {
     history.push('/memberslist');
   }
 
-  const buttonColor = {
-      "background-color": "#6c757d",
-      color: "white"
+  const [buttonColor, buttonColorClicked] = useState({
+    "background-color": "rgba(0,0,0,.125)",
+    color: "black",
+});
+
+const [buttonColor1, buttonColorClicked1] = useState({
+  "background-color": "rgba(0,0,0,.125)",
+  color: "black",
+});
+
+  const groupButton = {
+    width: "80%",
+    marginLeft: "10%"
+}
+
+  const flexyCheckbox = {
+    display: "flex",
+    justifyContent: "space-evenly"
   }
 
     return (
@@ -55,25 +70,44 @@ function PopupProject(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={submitForm}>
-            <input 
+          <Form onSubmit={submitForm}>
+            <Input 
               type="text" 
               placeholder="Nom du projet" 
               value={projectName}
               onChange={e=> setProjectName(e.target.value)}
             />
-            <input 
+            <br/>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                <Label for="start">Date de début</Label>
+                <Input 
               type="date" 
               value={startDate}
+              id="start"
               onChange={e=> setStartDate(e.target.value)}
             />
-            <input 
+          </FormGroup>
+        </Col>
+        <Col md={6}>
+          <FormGroup>
+          <Label for="end">Date de fin</Label>
+          <Input 
               type="date" 
               value={endDate}
+              id="end"
               onChange={e=> setEndDate(e.target.value)}
             />
-            <legend>
-            Vos compétences: 
+          </FormGroup>
+        </Col>
+      </Row>
+
+      <br/>
+            
+            
+            Domaine(s) du projet : 
+            <div style={flexyCheckbox}>
             <Checkbox
               value="Electronique"
               label="Electronique"
@@ -95,23 +129,60 @@ function PopupProject(props) {
               name="skillsArea"
               onChange={handleCheckElement}
             />
-          </legend>
-            <input 
+            </div>
+
+            <br/>
+     
+            Type de projet :
+
+            <br/>
+
+            <div>
+            <ButtonGroup style={groupButton}>
+              <Button 
+                style={buttonColor} 
+                onClick={
+                  () => setRSelected(1), 
+                  () => buttonColorClicked({
+                    backgroundColor: "#5a6268",
+                    color: "white",
+                  })} 
+                active={rSelected === "Création"}
+              >
+                Création
+              </Button>
+              <Button 
+                style={buttonColor1} 
+                onClick={
+                  () => setRSelected(2),
+                  () => buttonColorClicked1({
+                    backgroundColor: "#5a6268",
+                    color: "white",
+                  })} 
+                active={rSelected === "Formation"}
+              >
+                Formation
+              </Button>
+            </ButtonGroup>
+            </div>
+
+            <br/>
+            <br/>
+
+            <Input 
               type="textarea" 
               placeholder="Description"
               value={description}
               onChange={e=> setDescription(e.target.value)}
             />
-            <ButtonGroup>
-              <Button style={buttonColor} onClick={() => setRSelected(1)} active={rSelected === "Création"}>Création</Button>
-              <Button style={buttonColor} onClick={() => setRSelected(2)} active={rSelected === "Formation"}>Formation</Button>
-            </ButtonGroup>
-            <input type="submit"/>
-          </form>
+
+            <br/>
+
+          </Form>
         </Modal.Body>
         <Modal.Footer>
+          <Button type="submit">Créer le projet</Button>
           <Button onClick={redirection}>Recruter des Makers</Button>
-          <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
