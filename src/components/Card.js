@@ -20,7 +20,8 @@ const CardProject = (props) => {
   };
   const cardbodycss = {
     margin: "0.5em",
-    "min-width": "340px"
+    "min-width": "340px",
+    "box-shadow": "0px 4px 4px rgba(0,0,0,.125)"
   };
 
   return (

@@ -5,6 +5,10 @@ import { Button, ButtonGroup } from 'reactstrap';
 function PopupProject(props) {
 
   const [rSelected, setRSelected] = useState(null);
+  const buttonColor = {
+      "background-color": "#6c757d",
+      color: "white"
+  }
 
     return (
       <Modal
@@ -24,12 +28,12 @@ function PopupProject(props) {
           <input type="date" />
           <input type="text_area" placeholder="Description"/>
           <ButtonGroup>
-            <Button color="primary" onClick={() => setRSelected(1)} active={rSelected === "Créatin"}>Création</Button>
-            <Button color="primary" onClick={() => setRSelected(2)} active={rSelected === "Formation"}>Formation</Button>
+            <Button style={buttonColor} onClick={() => setRSelected(1)} active={rSelected === "Créatin"}>Création</Button>
+            <Button style={buttonColor} onClick={() => setRSelected(2)} active={rSelected === "Formation"}>Formation</Button>
           </ButtonGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button onClick={props.onHide}>Créer le projet</Button>
         </Modal.Footer>
       </Modal>
     );
