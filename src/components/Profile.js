@@ -42,13 +42,18 @@ const Profile = () => {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     margin: "3em 0em",
+    padding: "0 2em",
     flex: 2
   }
 
   const icons = {
     margin: "0.5em"
+  }
+
+  const titleProject = {
+    margin: '0.5em 1em'
   }
 
   return (
@@ -142,7 +147,7 @@ const Profile = () => {
           </Media>
         </Media>
       </div>
-      <h2>Mes projets</h2>
+      <h2 style={titleProject}>Mes projets</h2>
       <CardProject />
       
       <PopupProject />
