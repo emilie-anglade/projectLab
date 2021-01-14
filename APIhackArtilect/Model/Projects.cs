@@ -10,11 +10,16 @@ namespace APIhackArtilect
         public int Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
-        public Dictionary<string, bool> Domain { get; set; }
+        public ICollection<DomainType> Domain { get; set; }
+
         public List<Members> MembersList { get; set; }
         public string Description { get; set; }
         public string DateBegin { get; set; }
         public string DateEnd { get; set; }
     
+    }
+    public enum DomainType
+    { Automatic,
+      Electronic,
     }
 }
