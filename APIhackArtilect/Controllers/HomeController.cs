@@ -58,16 +58,17 @@ namespace APIhackArtilect.Controllers
 
         //retourne les infos d'un membre
         [Route("/{idUser}")]
-        public IQueryable GetMember(int idUser)
+        public Members GetMember(int idUser)
         {
-            return _context.Members.Where(m => m.Id == idUser);
+            return _context.Members.FirstOrDefault(m => m.Id == idUser);
         }
 
         //retourne les projets d'un membre
         [Route("/{idUser}/MyProjects")]
-        public IQueryable<Projects> GetProjectsMember(int idUser)
+        public List<Projects> GetProjectsMember(int idUser)
         {
-            return _context.
+            Members member = GetMember(idUser);
+            return member.ProjectsList;
         }
     }
 }
