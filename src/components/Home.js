@@ -6,8 +6,8 @@ const Home = () => {
     <div>
       <h1>Welcome to ProjectLab</h1>
       <section>
-      <button><Link to="/inscription">Inscription</Link></button>
-      <button><Link to="/connexion">Connexion</Link></button>
+      <button><Link to="/signup">Inscription</Link></button>
+      <button><Link to="/signin">Connexion</Link></button>
       </section>
     </div>
   )

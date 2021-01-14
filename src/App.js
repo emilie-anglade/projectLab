@@ -6,9 +6,12 @@ import {
   Link
 } from "react-router-dom";
 
-import Connexion from './components/Connexion';
+import CreateProject from './components/CreateProject';
 import Home from './components/Home';
-import Inscription from './components/Inscription';
+import MembersList from './components/MembersList';
+import Profile from './components/Profile';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 import './App.css';
 
@@ -20,11 +23,20 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/connexion">
-            <Connexion />
+          <Route path="/signin">
+            <SignIn />
           </Route>
-          <Route path="/inscription">
-            <Inscription />
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/createproject">
+            <CreateProject />
+          </Route>
+          <Route path="/memberslist">
+            <MembersList />
           </Route>
         </Switch>
       </div>

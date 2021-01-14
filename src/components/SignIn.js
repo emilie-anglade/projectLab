@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Connexion = () => {
+const SignIn = () => {
   return (
     <h1>Connexion</h1>
   )
 }
 
-export default Connexion;
+export default SignIn;
