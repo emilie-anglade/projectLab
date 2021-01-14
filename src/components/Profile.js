@@ -1,6 +1,6 @@
 import React from 'react';
 import NavbarProject from './Navbar';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import Footer from './Footer';
 import CardProject from './Card';
 import PopupProject from './Popup';
 import { Button } from 'reactstrap';
@@ -9,13 +9,17 @@ import { Button } from 'reactstrap';
 const Profile = () => {
 
   const [modalShow, setModalShow] = React.useState(false);
+
+  const clc = {
+    minHeight: "100vh",
+    position: "relative"
+  }
   const styleButton = {
     margin: "3em",
-    float: "right"
   }
 
   return (
-    <div>
+    <div style={clc}>
       <NavbarProject />
       <CardProject />
       <PopupProject />
@@ -27,6 +31,7 @@ const Profile = () => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+      <Footer/>
     </div>
   )
 }
