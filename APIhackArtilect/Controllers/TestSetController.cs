@@ -24,15 +24,19 @@ namespace APIhackArtilect.Controllers
 
             var domain1 = new Domain();
             domain1.Name = "Biologie";
+            _context.Domains.Add(domain1);
 
             var domain2 = new Domain();
             domain2.Name = "Drone";
+            _context.Domains.Add(domain2);
 
             var domain3 = new Domain();
             domain3.Name = "Electronique";
+            _context.Domains.Add(domain3);
 
             var domain4 = new Domain();
             domain4.Name = "Couture";
+            _context.Domains.Add(domain4)
 
             var domain5 = new Domain();
             domain5.Name = "Design";
@@ -55,7 +59,7 @@ namespace APIhackArtilect.Controllers
             var domain11 = new Domain();
             domain11.Name = "CosplayLab";
 
-
+            _context.SaveChanges();
         }
     }
 }
