@@ -8,6 +8,7 @@ namespace APIhackArtilect
     public class Projects
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string Category { get; set; }
         public Dictionary<string, bool> Domain { get; set; }
         public List<Members> MembersList { get; set; }

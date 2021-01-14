@@ -6,14 +6,21 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIhackArtilect
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+            ArtilectDbContext context = new ArtilectDbContext();
+            //context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
