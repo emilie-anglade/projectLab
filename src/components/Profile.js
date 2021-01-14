@@ -9,17 +9,16 @@ import { Button } from 'reactstrap';
 const Profile = () => {
 
   const [modalShow, setModalShow] = React.useState(false);
+  const styleButton = {
+    margin: "3em",
+  }
 
   return (
     <div>
       <NavbarProject />
-      <h1>Profil</h1>
-      <button>
-        <Link to="/createproject">Créer un projet</Link>
-      </button>
       <CardProject />
       <PopupProject />
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button style={styleButton} variant="primary" onClick={() => setModalShow(true)}>
         Créer un projet
       </Button>
 

@@ -37,6 +37,11 @@ function PopupProject(props) {
     history.push('/memberslist');
   }
 
+  const buttonColor = {
+      "background-color": "#6c757d",
+      color: "white"
+  }
+
     return (
       <Modal
         {...props}
@@ -98,8 +103,8 @@ function PopupProject(props) {
               onChange={e=> setDescription(e.target.value)}
             />
             <ButtonGroup>
-              <Button color="primary" onClick={() => setRSelected(1)} active={rSelected === "Création"}>Création</Button>
-              <Button color="primary" onClick={() => setRSelected(2)} active={rSelected === "Formation"}>Formation</Button>
+              <Button style={buttonColor} onClick={() => setRSelected(1)} active={rSelected === "Création"}>Création</Button>
+              <Button style={buttonColor} onClick={() => setRSelected(2)} active={rSelected === "Formation"}>Formation</Button>
             </ButtonGroup>
             <input type="submit"/>
           </form>

@@ -1,6 +1,7 @@
 import React from 'react';
-import Checkbox from './Checkbox';
 import { withRouter } from "react-router-dom";
+import Checkbox from './Checkbox';
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -49,50 +50,78 @@ class SignUp extends React.Component {
   submitForm = (e) => {
     e.preventDefault();
     console.log(this.state);
-    alert(`Welcome ${this.state.username}`);
+    alert(`Bienvenue ${this.state.username} !`);
     this.props.history.push('/profile');
   };
 
   render() {
-    return (
-      <form onSubmit={this.submitForm}>
-        <label htmlFor="username">
-          Nom d'utilisateur :
-          <input
-            id="username"
-            name="username"
-            type="text"
-            minLength="4"
-            required
-            checked={this.state.firstname}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label htmlFor="email">
-          E-mail :
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            checked={this.state.email}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <label htmlFor="password">
-          Mot de passe :
-          <input
-            id="password"
-            name="password"
-            type="password"
-            minLength="6"
-            required
-            checked={this.state.password}
-            onChange={this.handleInputChange} />
-        </label>
-        <br />
-        <legend>
-          Vos compétences: 
+
+    const form = {
+      "margin-left": "auto",
+      "margin-right": "auto",
+      "margin-top": "1em",
+      "text-align": "center",
+      width: "50%",
+      border: "1px solid rgba(0,0,0,.125)",
+      "border-radius": "0.5em",
+      "box-shadow": "0px 4px 4px rgba(0,0,0,.125)"
+    }
+
+    const formContainer = {
+      "margin-left": "auto",
+      "margin-right": "auto",
+      "margin-top": "1em",
+      "margin-bottom": "1em",
+      width: "80%",
+      height: "80%"
+    }
+
+    const sizeText = {
+      "font-size": "18px"
+    }
+
+  return (
+    <Form style={form} onSubmit={this.submitForm}>
+      <div style={formContainer}>
+      <h3>Inscription</h3>
+      <br/>
+      <Row form>
+        <Col>
+        <FormGroup>
+        <Label for="username" style={sizeText}>Nom d'utilisateur</Label>
+        <Input 
+          id="username"
+          name="username"
+          type="text"
+          minLength="4"
+          required
+          checked={this.state.firstname}
+          onChange={this.handleInputChange}
+        />
+      </FormGroup>
+        <FormGroup>
+        <Label for="email" style={sizeText}>Email</Label>
+        <Input 
+          type="email" 
+          name="email" 
+          id="email"
+          required
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for="password" style={sizeText}>Mot de passe</Label>
+        <Input 
+          type="password" 
+          name="password" id="password" 
+          minLength="6"
+          required
+        />
+      </FormGroup>
+        </Col>
+      </Row>
+      <br/>
+      <FormGroup>
+          <p style={sizeText}>Vos compétences : </p>
           <Checkbox
             value="Electronique"
             label="Electronique"
@@ -114,10 +143,9 @@ class SignUp extends React.Component {
             name="skills"
             onChange={this.handleCheckElement}
           />
-        </legend>
-        <br />
-        <legend>
-          Vos centres d'intérêts: 
+          <br/>
+      </FormGroup>
+          <p style={sizeText}>Vos centres d'intérêts :</p> 
           <Checkbox
             value="Electronique"
             label="Electronique"
@@ -139,12 +167,11 @@ class SignUp extends React.Component {
             name="interests"
             onChange={this.handleCheckElement}
           />
-        </legend>
-        <br />
-        <input type="submit" value="Valider"/>
-      </form>
-    );
-  }
-}
+          <br/>
+      <Button>Valider</Button>
+      </div>
+    </Form>
+  );
+}}
 
 export default withRouter(SignUp);
