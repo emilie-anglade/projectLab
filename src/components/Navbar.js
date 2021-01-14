@@ -9,6 +9,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+import logo from "./img/proje-lab.svg";
 
 
 const NavbarProject = (props) => {
@@ -16,21 +17,20 @@ const NavbarProject = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
   const nav = {
-    background: "#2F4A5E",
-    color: "white",
+    "box-shadow": "0px 4px 4px rgba(0,0,0,.125)"
   };
   const navLinks = {
     "margin-right": "32px",
-    color: "white",
+    color: "black"
   }
 
   return (
     <div>
-      <Navbar style={nav} dark expand="md">
-        <NavbarBrand style={nav} href="/">
-          ProjectLab
+      <Navbar style={nav} light expand="md">
+        <NavbarBrand href="/">
+          <img src={logo} alt="logo" />
         </NavbarBrand>
-        <NavbarToggler style={nav} onClick={toggle} />
+        <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>

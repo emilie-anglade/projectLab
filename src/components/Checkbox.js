@@ -1,6 +1,9 @@
 import React from "react";
 
 const Checkbox = ({ value, label, id, name, onChange, isChecked }) => {
+  const checkbox = {
+    "margin-left": "1em"
+  }
   return (
     <div key={id}>
       <input
@@ -11,7 +14,7 @@ const Checkbox = ({ value, label, id, name, onChange, isChecked }) => {
         onChange={onChange}
         checked={isChecked}
       />
-      <label htmlFor={id}>{label}</label>
+      <label style={checkbox} htmlFor={id}>{label}</label>
     </div>
   );
 };
