@@ -11,9 +11,9 @@ namespace APIhackArtilect
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Category { get; set; }
-        public ICollection<Domain> Area { get; set; }
+        public Skills Skill { get; set; }
 
-        public List<Members> MembersList { get; set; }
+        public ICollection<Members> MembersList { get; set; }
         public string Description { get; set; }
         public string DateBegin { get; set; }
         public string DateEnd { get; set; }

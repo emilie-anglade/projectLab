@@ -7,6 +7,63 @@ namespace APIhackArtilect.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Domains",
+                columns: table => new
+                {
+                    DomainId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Domains", x => x.DomainId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Interests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Biologie = table.Column<bool>(type: "bit", nullable: false),
+                    Drone = table.Column<bool>(type: "bit", nullable: false),
+                    Electronique = table.Column<bool>(type: "bit", nullable: false),
+                    Couture = table.Column<bool>(type: "bit", nullable: false),
+                    Design = table.Column<bool>(type: "bit", nullable: false),
+                    Machines = table.Column<bool>(type: "bit", nullable: false),
+                    Musique = table.Column<bool>(type: "bit", nullable: false),
+                    Robotique = table.Column<bool>(type: "bit", nullable: false),
+                    Architecture = table.Column<bool>(type: "bit", nullable: false),
+                    Media = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interests", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Skills",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Biologie = table.Column<bool>(type: "bit", nullable: false),
+                    Drone = table.Column<bool>(type: "bit", nullable: false),
+                    Electronique = table.Column<bool>(type: "bit", nullable: false),
+                    Couture = table.Column<bool>(type: "bit", nullable: false),
+                    Design = table.Column<bool>(type: "bit", nullable: false),
+                    Machines = table.Column<bool>(type: "bit", nullable: false),
+                    Musique = table.Column<bool>(type: "bit", nullable: false),
+                    Robotique = table.Column<bool>(type: "bit", nullable: false),
+                    Architecture = table.Column<bool>(type: "bit", nullable: false),
+                    Media = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Skills", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Members",
                 columns: table => new
                 {
@@ -14,11 +71,25 @@ namespace APIhackArtilect.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SkillId = table.Column<int>(type: "int", nullable: true),
+                    InterestId = table.Column<int>(type: "int", nullable: true),
                     DreamProject = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Members", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Members_Interests_InterestId",
+                        column: x => x.InterestId,
+                        principalTable: "Interests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Members_Skills_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skills",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,6 +100,7 @@ namespace APIhackArtilect.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Category = table.Column<bool>(type: "bit", nullable: false),
+                    SkillId = table.Column<int>(type: "int", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateBegin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateEnd = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -36,6 +108,12 @@ namespace APIhackArtilect.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projects_Skills_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skills",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,44 +137,6 @@ namespace APIhackArtilect.Migrations
                     table.ForeignKey(
                         name: "FK_Friends_Members_FriendsSecondId",
                         column: x => x.FriendsSecondId,
-                        principalTable: "Members",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Interests",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MemberId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Interests", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Interests_Members_MemberId",
-                        column: x => x.MemberId,
-                        principalTable: "Members",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Skills",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MemberId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Skills", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Skills_Members_MemberId",
-                        column: x => x.MemberId,
                         principalTable: "Members",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -187,55 +227,6 @@ namespace APIhackArtilect.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Domains",
-                columns: table => new
-                {
-                    DomainId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InterestsId = table.Column<int>(type: "int", nullable: true),
-                    ProjectsId = table.Column<int>(type: "int", nullable: true),
-                    SkillsId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Domains", x => x.DomainId);
-                    table.ForeignKey(
-                        name: "FK_Domains_Interests_InterestsId",
-                        column: x => x.InterestsId,
-                        principalTable: "Interests",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Domains_Projects_ProjectsId",
-                        column: x => x.ProjectsId,
-                        principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Domains_Skills_SkillsId",
-                        column: x => x.SkillsId,
-                        principalTable: "Skills",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Domains_InterestsId",
-                table: "Domains",
-                column: "InterestsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Domains_ProjectsId",
-                table: "Domains",
-                column: "ProjectsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Domains_SkillsId",
-                table: "Domains",
-                column: "SkillsId");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Friends_FriendFirstId",
                 table: "Friends",
@@ -245,11 +236,6 @@ namespace APIhackArtilect.Migrations
                 name: "IX_Friends_FriendsSecondId",
                 table: "Friends",
                 column: "FriendsSecondId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Interests_MemberId",
-                table: "Interests",
-                column: "MemberId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Invitations_ProjectId",
@@ -267,14 +253,24 @@ namespace APIhackArtilect.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Members_InterestId",
+                table: "Members",
+                column: "InterestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Members_SkillId",
+                table: "Members",
+                column: "SkillId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_MembersProjects_ProjectsListId",
                 table: "MembersProjects",
                 column: "ProjectsListId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skills_MemberId",
-                table: "Skills",
-                column: "MemberId");
+                name: "IX_Projects_SkillId",
+                table: "Projects",
+                column: "SkillId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Subcriptions_ProjectTargetId",
@@ -305,16 +301,16 @@ namespace APIhackArtilect.Migrations
                 name: "Subcriptions");
 
             migrationBuilder.DropTable(
-                name: "Interests");
-
-            migrationBuilder.DropTable(
-                name: "Skills");
+                name: "Members");
 
             migrationBuilder.DropTable(
                 name: "Projects");
 
             migrationBuilder.DropTable(
-                name: "Members");
+                name: "Interests");
+
+            migrationBuilder.DropTable(
+                name: "Skills");
         }
     }
 }

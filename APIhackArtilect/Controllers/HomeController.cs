@@ -32,30 +32,22 @@ namespace APIhackArtilect.Controllers
         }
 
         //crée un nouveau profile
-        [HttpPost]
+        /*[HttpPost]
         [Route("/NewProfile")]
-        public void CreateProfile(IntermediateMember inputData)
+        public void CreateProfile(Members inputData)
         {
             Members newMember = new Members();
             newMember.UserName = inputData.UserName;
             newMember.Mail = inputData.Mail;
+            newMember.Skills = inputData.Skills;
+            newMember.Interests = inputData.Interests;
             newMember.DreamProject = inputData.DreamProject;
 
-            int i = 0;
-            newMember.Skills = new List<Skills>();
-            foreach(int skillId in inputData.IdSkills)
-            {
-                Skills skill = new Skills();
-                skill.Domain.Add(_context.Domains.FirstOrDefault(s => s.DomainId == skillId));
-                newMember.Skills.Add(skill);
-                i++;
-            }
-            //newMember.Skills = _context.Domains.Where(s => s.DomainId = inputData.IdSkills)
-
+            
             _context.Members.Add(newMember);
             _context.SaveChanges();
         }
-
+*/
         //retourne les infos d'un membre
         [Route("/{idUser}")]
         public Members GetMember(int idUser)
@@ -64,11 +56,11 @@ namespace APIhackArtilect.Controllers
         }
 
         //retourne les projets d'un membre
-        [Route("/{idUser}/MyProjects")]
-        public List<Projects> GetProjectsMember(int idUser)
-        {
-            Members member = GetMember(idUser);
-            return member.ProjectsList;
-        }
+        //[Route("/{idUser}/MyProjects")]
+        //public List<Projects> GetProjectsMember(int idUser)
+        //{
+        //    Members member = GetMember(idUser);
+        //    return member.ProjectsList;
+        //}
     }
 }

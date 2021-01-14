@@ -11,9 +11,9 @@ namespace APIhackArtilect
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Mail { get; set; }
-        public ICollection<Skills> Skills { get; set; }
-        public ICollection<Interests> Interests { get; set; }
-        public List<Projects> ProjectsList { get; set; }
+        public Skills Skill { get; set; }
+        public Interests Interest { get; set; }
+        public ICollection<Projects> ProjectsList { get; set; }
         public string DreamProject { get; set; }
     }
 }

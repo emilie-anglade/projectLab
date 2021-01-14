@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIhackArtilect.Migrations
 {
     [DbContext(typeof(ArtilectDbContext))]
-    [Migration("20210114214116_Skills_Interests_Added")]
-    partial class Skills_Interests_Added
+    [Migration("20210114235320_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,13 +31,23 @@ namespace APIhackArtilect.Migrations
                     b.Property<string>("DreamProject")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("InterestId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SkillId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("InterestId");
+
+                    b.HasIndex("SkillId");
 
                     b.ToTable("Members");
                 });
@@ -49,25 +59,10 @@ namespace APIhackArtilect.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("InterestsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectsId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SkillsId")
-                        .HasColumnType("int");
-
                     b.HasKey("DomainId");
-
-                    b.HasIndex("InterestsId");
-
-                    b.HasIndex("ProjectsId");
-
-                    b.HasIndex("SkillsId");
 
                     b.ToTable("Domains");
                 });
@@ -101,12 +96,37 @@ namespace APIhackArtilect.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("MemberId")
-                        .HasColumnType("int");
+                    b.Property<bool>("Architecture")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Biologie")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Couture")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Design")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Drone")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Electronique")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Machines")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Media")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Musique")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Robotique")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MemberId");
 
                     b.ToTable("Interests");
                 });
@@ -148,12 +168,37 @@ namespace APIhackArtilect.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("MemberId")
-                        .HasColumnType("int");
+                    b.Property<bool>("Architecture")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Biologie")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Couture")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Design")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Drone")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Electronique")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Machines")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Media")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Musique")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Robotique")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MemberId");
 
                     b.ToTable("Skills");
                 });
@@ -205,7 +250,12 @@ namespace APIhackArtilect.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SkillId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SkillId");
 
                     b.ToTable("Projects");
                 });
@@ -225,19 +275,19 @@ namespace APIhackArtilect.Migrations
                     b.ToTable("MembersProjects");
                 });
 
-            modelBuilder.Entity("APIhackArtilect.Model.Domain", b =>
+            modelBuilder.Entity("APIhackArtilect.Members", b =>
                 {
-                    b.HasOne("APIhackArtilect.Model.Interests", null)
-                        .WithMany("Domain")
-                        .HasForeignKey("InterestsId");
+                    b.HasOne("APIhackArtilect.Model.Interests", "Interest")
+                        .WithMany()
+                        .HasForeignKey("InterestId");
 
-                    b.HasOne("APIhackArtilect.Projects", null)
-                        .WithMany("Area")
-                        .HasForeignKey("ProjectsId");
+                    b.HasOne("APIhackArtilect.Model.Skills", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId");
 
-                    b.HasOne("APIhackArtilect.Model.Skills", null)
-                        .WithMany("Domain")
-                        .HasForeignKey("SkillsId");
+                    b.Navigation("Interest");
+
+                    b.Navigation("Skill");
                 });
 
             modelBuilder.Entity("APIhackArtilect.Model.Friends", b =>
@@ -253,15 +303,6 @@ namespace APIhackArtilect.Migrations
                     b.Navigation("FriendFirst");
 
                     b.Navigation("FriendsSecond");
-                });
-
-            modelBuilder.Entity("APIhackArtilect.Model.Interests", b =>
-                {
-                    b.HasOne("APIhackArtilect.Members", "Member")
-                        .WithMany("Interests")
-                        .HasForeignKey("MemberId");
-
-                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("APIhackArtilect.Model.Invitation", b =>
@@ -285,15 +326,6 @@ namespace APIhackArtilect.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("APIhackArtilect.Model.Skills", b =>
-                {
-                    b.HasOne("APIhackArtilect.Members", "Member")
-                        .WithMany("Skills")
-                        .HasForeignKey("MemberId");
-
-                    b.Navigation("Member");
-                });
-
             modelBuilder.Entity("APIhackArtilect.Model.Subscribe", b =>
                 {
                     b.HasOne("APIhackArtilect.Projects", "ProjectTarget")
@@ -309,6 +341,15 @@ namespace APIhackArtilect.Migrations
                     b.Navigation("Sender");
                 });
 
+            modelBuilder.Entity("APIhackArtilect.Projects", b =>
+                {
+                    b.HasOne("APIhackArtilect.Model.Skills", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId");
+
+                    b.Navigation("Skill");
+                });
+
             modelBuilder.Entity("MembersProjects", b =>
                 {
                     b.HasOne("APIhackArtilect.Members", null)
@@ -322,28 +363,6 @@ namespace APIhackArtilect.Migrations
                         .HasForeignKey("ProjectsListId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("APIhackArtilect.Members", b =>
-                {
-                    b.Navigation("Interests");
-
-                    b.Navigation("Skills");
-                });
-
-            modelBuilder.Entity("APIhackArtilect.Model.Interests", b =>
-                {
-                    b.Navigation("Domain");
-                });
-
-            modelBuilder.Entity("APIhackArtilect.Model.Skills", b =>
-                {
-                    b.Navigation("Domain");
-                });
-
-            modelBuilder.Entity("APIhackArtilect.Projects", b =>
-                {
-                    b.Navigation("Area");
                 });
 #pragma warning restore 612, 618
         }
