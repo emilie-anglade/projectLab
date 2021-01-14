@@ -11,6 +11,7 @@ const Profile = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const styleButton = {
     margin: "3em",
+    float: "right"
   }
 
   return (
