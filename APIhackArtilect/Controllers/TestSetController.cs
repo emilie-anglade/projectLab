@@ -18,7 +18,7 @@ namespace APIhackArtilect.Controllers
             _context = injectedDbContext;
         }
 
-        [Route("api/insertData"]
+        [Route("api/insertData")]
         public void InsertData()
         {
 

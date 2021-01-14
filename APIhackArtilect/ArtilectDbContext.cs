@@ -23,6 +23,8 @@ namespace APIhackArtilect
         public DbSet<Friends> Friends { get; set; }
 
         public DbSet<Domain> Domains { get; set; }
+        public DbSet<Skills> Skills { get; set; }
+        public DbSet<Interests> Interests { get; set; }
 
     }
 
