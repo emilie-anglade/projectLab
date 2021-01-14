@@ -17,5 +17,10 @@ namespace APIhackArtilect
         public DbSet<Subscribe> Subcriptions { get; set; }
         public DbSet<Friends> Friends { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("DefaultConnection");
+        }
     }
+
 }

@@ -16,11 +16,6 @@ namespace APIhackArtilect
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-
-            ArtilectDbContext context = new ArtilectDbContext();
-            //context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
