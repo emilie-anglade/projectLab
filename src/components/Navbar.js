@@ -24,31 +24,33 @@ const NavbarProject = (props) => {
     color: "black"
   }
 
+  const red = {
+    "margin-right": "32px",
+    color: "tomato"
+  }
+
   return (
     <div>
       <Navbar style={nav} light expand="md">
-        <NavbarBrand href="/">
+        <NavbarBrand href="/profile">
           <img src={logo} alt="logo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink tag={Link} to="/" style={navLinks}>
-                Accueil
-              </NavLink>
-            </NavItem>
-            <NavItem>
+          <NavItem>
               <NavLink tag={Link} to="/profile" style={navLinks}>
-                Mon profil
+                Mon Profil
+              </NavLink>
+            </NavItem>
+          <NavItem>
+              <NavLink tag={Link} to="/memberslist" style={navLinks}>
+                CoMakers
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                style={navLinks}
-                href="https://github.com/reactstrap/reactstrap"
-              >
-                Projets
+              <NavLink tag={Link} to="/" style={red}>
+                Déconnexion
               </NavLink>
             </NavItem>
           </Nav>
