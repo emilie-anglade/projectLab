@@ -5,7 +5,6 @@ import logo from "./img/proje-lab.svg";
 import collab from './img/collab.svg';
 import { assertUserWhitespacable } from '@babel/types';
 
-
 const Home = () => {
 
   const link = {
@@ -39,9 +38,14 @@ const Home = () => {
   }
 
   const buttonHome = {
+
     marginTop: "1em",
     marginBottom: "2em",
     width: "6em",
+    marginTop: "4em",
+    marginBottom: "4em",
+    width: "16em",
+    backgroundColor: "#33658A"
 
   }
 

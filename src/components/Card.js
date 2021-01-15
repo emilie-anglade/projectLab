@@ -14,7 +14,7 @@ const CardProject = (props) => {
   const cardgroup = {
     width: "95%",
     margin: "auto",
-    "padding-top": "2em",
+    "padding-top": "0.25em",
     display: "flex",
     "flex-wrap": "wrap"
   };
@@ -25,7 +25,8 @@ const CardProject = (props) => {
   };
 
   const styleButton = {
-    float: "right"
+    float: "right",
+    backgroundColor: "#33658A"
   }
 
   return (

@@ -2,7 +2,7 @@ import React from "react";
 
 const Checkbox = ({ value, label, id, name, onChange, isChecked }) => {
   const checkbox = {
-    "margin-left": "1em"
+    "margin-left": "0.75em",
   }
   return (
     <div key={id}>

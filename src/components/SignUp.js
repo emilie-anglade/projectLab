@@ -80,6 +80,10 @@ class SignUp extends React.Component {
       "font-size": "18px"
     }
 
+    const cookies = {
+      backgroundColor: "#33658A"
+    }
+
   return (
     <Form style={form} onSubmit={this.submitForm}>
       <div style={formContainer}>
@@ -143,32 +147,144 @@ class SignUp extends React.Component {
             name="skills"
             onChange={this.handleCheckElement}
           />
+          <Checkbox
+            value="Drone"
+            label="Drone"
+            id="4"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Couture"
+            label="Couture"
+            id="5"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Design"
+            label="Design"
+            id="6"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Machines"
+            label="Machines"
+            id="7"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Musique"
+            label="Musique"
+            id="8"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Architecture"
+            label="Architecture"
+            id="9"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Media"
+            label="Media"
+            id="10"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Cosplay"
+            label="Cosplay"
+            id="11"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
           <br/>
       </FormGroup>
           <p style={sizeText}>Vos centres d'intérêts :</p> 
           <Checkbox
             value="Electronique"
             label="Electronique"
-            id="4"
-            name="interests"
+            id="1"
+            name="skills"
             onChange={this.handleCheckElement}
           />
           <Checkbox
             value="Biologie"
             label="Biologie"
-            id="5"
-            name="interests"
+            id="2"
+            name="skills"
             onChange={this.handleCheckElement}
           />
           <Checkbox
             value="Robotique"
             label="Robotique"
+            id="3"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Drone"
+            label="Drone"
+            id="4"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Couture"
+            label="Couture"
+            id="5"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Design"
+            label="Design"
             id="6"
-            name="interests"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Machines"
+            label="Machines"
+            id="7"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Musique"
+            label="Musique"
+            id="8"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Architecture"
+            label="Architecture"
+            id="9"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Media"
+            label="Media"
+            id="10"
+            name="skills"
+            onChange={this.handleCheckElement}
+          />
+          <Checkbox
+            value="Cosplay"
+            label="Cosplay"
+            id="11"
+            name="skills"
             onChange={this.handleCheckElement}
           />
           <br/>
-      <Button>Valider</Button>
+      <Button style={cookies}>Valider</Button>
       </div>
     </Form>
   );
