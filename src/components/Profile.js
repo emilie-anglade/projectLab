@@ -1,12 +1,15 @@
 import React from 'react';
 import NavbarProject from './Navbar';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import Footer from './Footer';
 import CardProject from './Card';
 import PopupProject from './Popup';
 import { 
-  Button,
-  Container, 
-  Media
+  Button, 
+  Media,
+  Card,
+  CardText, 
+  CardBody,
+  CardTitle,
 } from 'reactstrap';
 import wrench from './img/wrench.png';
 import engrenage from './img/engrenage.png';
@@ -19,23 +22,25 @@ import crayon from './img/crayon.png';
 const Profile = () => {
 
   const [modalShow, setModalShow] = React.useState(false);
-  
+
+  const clc = {
+    minHeight: "100vh",
+    position: "relative"
+  }
   const styleButton = {
     margin: "3em",
-    float: "right"
   }
   const avatarContainer = {
     display: 'flex',
     justifyContent: 'flex-end',
-    'margin': "3em 0",
-    paddingLeft: "3em",
-    flex: 1
   }
+
   const headerContainer = {
     display: 'flex',
-    justifyContent: 'flew-end',
+    justifyContent: 'space-evenly',
+    alignItems: "start",
     flexWrap: 'wrap',
-    margin: "0.5em",
+    marginTop: "2em",
     padding: "1em"
   }
   const skillsContainer = {
@@ -43,9 +48,7 @@ const Profile = () => {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    margin: "3em 0em",
     padding: "0 2em",
-    flex: 2
   }
 
   const icons = {
@@ -56,8 +59,29 @@ const Profile = () => {
     margin: '0.5em 1em'
   }
 
+  const cardFriends = {
+    maxWidth: "420px",
+    maxHeight: '350px',
+    "box-shadow": "0px 4px 4px rgba(0,0,0,.125)"
+  }
+
+  const flexFriends = {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "no-wrap",
+    maxHeight: "70px",
+    minWidth: "400px"
+  }
+
+  const plus = {
+    marginTop: "1em",
+    textAlign: "center",
+    marginLeft: "9em"
+  }
+
   return (
-    <div>
+    <div style={clc}>
       <NavbarProject />
       <div style={headerContainer}>
         <Media style={avatarContainer}>
@@ -146,6 +170,39 @@ const Profile = () => {
             />
           </Media>
         </Media>
+        <div>
+      <Card style={cardFriends}>
+        <CardBody>
+          <CardTitle tag="h5">Mes amis</CardTitle>
+            <hr/>
+          <Card>
+            <CardBody style={flexFriends}>
+              <img 
+                src="https://avatars.dicebear.com/api/bottts/artilect.svg?background=%2300ff00" 
+                alt=""
+                className="mr-3 rounded"
+                width="45"
+                height="45" 
+              />
+              <CardText>Freddy Krueger</CardText>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardBody style={flexFriends}>
+              <img 
+                src="https://avatars.dicebear.com/api/bottts/artilect.svg?background=%23ff0000" 
+                alt="" 
+                className="mr-3 rounded"
+                width="45"
+                height="45" 
+              />
+              <CardText>Michael Myers</CardText>
+            </CardBody>
+          </Card>
+          <Button style={plus}>Voir plus</Button>
+        </CardBody>
+      </Card>
+    </div>
       </div>
       <h2 style={titleProject}>Mes projets</h2>
       <CardProject />
@@ -158,6 +215,7 @@ const Profile = () => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+      <Footer/>
     </div>
   )
 }
