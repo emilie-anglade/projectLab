@@ -41,14 +41,52 @@ namespace APIhackArtilect.Controllers
             newMember.Mail = inputData.Mail;
             newMember.DreamProject = inputData.DreamProject;
 
-            int i = 0;
             newMember.Skills = new List<Skills>();
             foreach(int skillId in inputData.IdSkills)
             {
                 Skills skill = new Skills();
                 skill.Domain.Add(_context.Domains.FirstOrDefault(s => s.DomainId == skillId));
                 newMember.Skills.Add(skill);
-                i++;
+            }
+
+            newMember.Interests = new List<Interests>();
+            foreach (int InterestId in inputData.IdInterests)
+            {
+                Interests interests = new Interests();
+                interests.Domain.Add(_context.Domains.FirstOrDefault(s => s.DomainId == InterestId));
+                newMember.Interests.Add(interests);
+            }
+            //newMember.Skills = _context.Domains.Where(s => s.DomainId = inputData.IdSkills)
+
+            _context.Members.Add(newMember);
+            _context.SaveChanges();
+        }
+
+        [HttpPost]
+        [Route("/{idUser}/NewProjects")]
+        public void CreateProject(IntermediateProject inputData)
+        {
+            Projects newProject = new Projects();
+            newProject.Name = inputData.ProjectName;
+            newProject.Category = inputData.Category;
+            newProject.Description = inputData.Description;
+            newProject.DateBegin = inputData.DateBegin;
+            newProject.DateEnd = inputData.DateEnd;
+
+            newProject.Area = new List<Area>();
+            foreach (int AreaId in inputData.IdArea)
+            {
+                Area area = new Area();
+                area.Domains.Add(_context.Domains.FirstOrDefault(s => s.DomainId == AreaId));
+                newProject.Area.Add(area);
+            }
+
+            newProject.MembersList = new List<Members>();
+            foreach (int MembersId in inputData.IdMember)
+            {
+                Members member = new Members();
+                member.Domain.Add(_context.Domains.FirstOrDefault(s => s.DomainId == MembersId));
+                newMember.Interests.Add(interests);
             }
             //newMember.Skills = _context.Domains.Where(s => s.DomainId = inputData.IdSkills)
 
