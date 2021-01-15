@@ -42,6 +42,10 @@ render() {
     "font-size": "18px"
   }
 
+  const elButton = {
+    backgroundColor: "#33658A"
+  }
+
 return (
   <Form style={form} onSubmit={this.submitForm}>
     <div style={formContainer}>
@@ -70,7 +74,7 @@ return (
       </Col>
     </Row>
         <br/>
-    <Button>Valider</Button>
+    <Button style={elButton}>Valider</Button>
     </div>
   </Form>
 );

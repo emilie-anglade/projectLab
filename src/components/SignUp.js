@@ -80,6 +80,10 @@ class SignUp extends React.Component {
       "font-size": "18px"
     }
 
+    const cookies = {
+      backgroundColor: "#33658A"
+    }
+
   return (
     <Form style={form} onSubmit={this.submitForm}>
       <div style={formContainer}>
@@ -280,7 +284,7 @@ class SignUp extends React.Component {
             onChange={this.handleCheckElement}
           />
           <br/>
-      <Button>Valider</Button>
+      <Button style={cookies}>Valider</Button>
       </div>
     </Form>
   );

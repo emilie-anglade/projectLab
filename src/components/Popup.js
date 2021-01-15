@@ -61,6 +61,10 @@ const [buttonColor1, buttonColorClicked1] = useState({
     flexWrap: "wrap"
   }
 
+  const buttonPopup = {
+    backgroundColor: "#33658A"
+  }
+
     return (
       <Modal
         {...props}
@@ -204,7 +208,7 @@ const [buttonColor1, buttonColorClicked1] = useState({
                 onClick={
                   () => setRSelected(1), 
                   () => buttonColorClicked({
-                    backgroundColor: "#5a6268",
+                    backgroundColor: "#33658A",
                     color: "white",
                   })} 
                 active={rSelected === "Création"}
@@ -216,7 +220,7 @@ const [buttonColor1, buttonColorClicked1] = useState({
                 onClick={
                   () => setRSelected(2),
                   () => buttonColorClicked1({
-                    backgroundColor: "#5a6268",
+                    backgroundColor: "#33658A",
                     color: "white",
                   })} 
                 active={rSelected === "Formation"}
@@ -241,8 +245,8 @@ const [buttonColor1, buttonColorClicked1] = useState({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={alertProject} type="submit">Créer le projet</Button>
-          <Button onClick={redirection}>Recruter des Makers</Button>
+          <Button style={buttonPopup} onClick={alertProject} type="submit">Créer le projet</Button>
+          <Button style={buttonPopup} onClick={redirection}>Recruter des Makers</Button>
         </Modal.Footer>
       </Modal>
     );
