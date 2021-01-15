@@ -1,5 +1,6 @@
 import React from 'react';
-// import axios from 'axios';
+import NavbarProject from './Navbar';
+import Footer from './Footer';
 import db from './db.json';
 import './MembersList.css';
 
@@ -10,15 +11,6 @@ class MembersList extends React.Component {
       makers: []
     };
   }
-
-  // componentDidMount() {
-  //   axios.get(`https://jsonplaceholder.typicode.com/users`)
-  //     .then(res => {
-  //       const makers = res.data;
-  //       this.setState({ makers });
-  //     })
-  // }
-  
   
   render() {
     const avatarCss = {
@@ -27,6 +19,8 @@ class MembersList extends React.Component {
     }
     return (
       <div>
+      <NavbarProject />
+        <div>
         <h1 className="title1CardMakers">Recrutez des Makers <span role="img" aria-label="rocket">🚀</span></h1>
           <div className="membersList">
           {db.map((item) => (
@@ -45,6 +39,8 @@ class MembersList extends React.Component {
             </div>
           ))}
           </div>
+        </div>
+        <Footer/>
       </div>
     )
   }
