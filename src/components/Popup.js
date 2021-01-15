@@ -29,6 +29,9 @@ function PopupProject(props) {
   const submitForm = (e) => {
     e.preventDefault();
     console.log(projectName, startDate, endDate, description, skillsArea);
+  };
+
+  const alertProject = () => {
     alert(`Ton projet ${projectName} a bien été enregistré`);
   };
 
@@ -181,7 +184,7 @@ const [buttonColor1, buttonColorClicked1] = useState({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button type="submit">Créer le projet</Button>
+          <Button onClick={alertProject} type="submit">Créer le projet</Button>
           <Button onClick={redirection}>Recruter des Makers</Button>
         </Modal.Footer>
       </Modal>
