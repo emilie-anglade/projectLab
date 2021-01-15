@@ -10,7 +10,9 @@ import {
   CardText, 
   CardBody,
   CardTitle,
+  NavLink
 } from 'reactstrap';
+import {Link} from 'react-router-dom';
 import wrench from './img/wrench.png';
 import engrenage from './img/engrenage.png';
 import pinceau from './img/pinceau.png';
@@ -27,8 +29,15 @@ const Profile = () => {
     minHeight: "100vh",
     position: "relative"
   }
+
+  const navLinks = {
+    "margin-right": "32px",
+    color: "black"
+  }
+
   const styleButton = {
     margin: "3em",
+    float: "right"
   }
   const avatarContainer = {
     display: 'flex',
@@ -80,19 +89,30 @@ const Profile = () => {
     marginLeft: "9em"
   }
 
+  const con = {
+    display: "flex",
+    flexDirection: "column"
+  }
+
+  const flute = {
+    marginRight: "1em",
+    marginTop: "1em"
+  }
+
   return (
     <div style={clc}>
       <NavbarProject />
       <div style={headerContainer}>
         <Media style={avatarContainer}>
           <Media left>
+            <div style={con}>
             <img
               alt="x"
               className="mr-3 rounded"
-              width="200"
               height="200"
-              src="https://avatars.dicebear.com/api/bottts/artilect.svg?background=%230000ff"
-            />
+              src="https://avatars.dicebear.com/api/bottts/artilect.svg?background=%230000ff"/>  
+              <Button style={flute}>Actualiser mon profil</Button>
+            </div>         
           </Media>
           <Media body>
             <h1>Harry Dean</h1>
@@ -199,11 +219,13 @@ const Profile = () => {
               <CardText>Michael Myers</CardText>
             </CardBody>
           </Card>
+          <NavLink tag={Link} to="/memberslist" style={navLinks}>
           <Button style={plus}>Voir plus</Button>
+              </NavLink>
         </CardBody>
       </Card>
     </div>
-      </div>
+    </div>
       <h2 style={titleProject}>Mes projets</h2>
       <CardProject />
       

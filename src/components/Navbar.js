@@ -15,6 +15,10 @@ import logo from "./img/proje-lab.svg";
 const NavbarProject = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const disconnect = () => {
+    alert(`Déconnecté !`);
+  };
+
   const toggle = () => setIsOpen(!isOpen);
   const nav = {
     "box-shadow": "0px 4px 4px rgba(0,0,0,.125)"
@@ -49,7 +53,7 @@ const NavbarProject = (props) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/" style={red}>
+              <NavLink onClick={disconnect} tag={Link} to="/" style={red}>
                 Déconnexion
               </NavLink>
             </NavItem>
