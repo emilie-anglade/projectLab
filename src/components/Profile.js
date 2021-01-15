@@ -1,7 +1,7 @@
 import React from 'react';
 import NavbarProject from './Navbar';
 import Footer from './Footer';
-import CardProject from './Card';
+// import CardProject from './Card';
 import PopupProject from './Popup';
 import { 
   Button, 
@@ -10,6 +10,8 @@ import {
   CardText, 
   CardBody,
   CardTitle,
+  CardDeck,
+  CardSubtitle,
   NavLink
 } from 'reactstrap';
 import {Link} from 'react-router-dom';
@@ -19,6 +21,7 @@ import pinceau from './img/pinceau.png';
 import tournevis from './img/tournevis.png';
 import machine from './img/machine.png';
 import crayon from './img/crayon.png';
+import dbprojects from './dbprojects.json';
 
 
 const Profile = () => {
@@ -102,6 +105,24 @@ const Profile = () => {
     backgroundColor: "#33658A"
   }
 
+  const cardgroup = {
+    width: "95%",
+    margin: "auto",
+    "padding-top": "0.25em",
+    display: "flex",
+    "flex-wrap": "wrap"
+  };
+  const cardbodycss = {
+    margin: "0.5em",
+    "min-width": "340px",
+    "box-shadow": "0px 4px 4px rgba(0,0,0,.125)"
+  };
+
+  const styleButtonProject = {
+    float: "right",
+    backgroundColor: "#33658A"
+  }
+
   return (
     <div style={clc}>
       <NavbarProject />
@@ -115,6 +136,14 @@ const Profile = () => {
               height="200"
               src="https://avatars.dicebear.com/api/bottts/artilect.svg?background=%230000ff"/>  
               <Button style={flute}>Actualiser mon profil</Button>
+              <PopupProject />
+      <Button style={flute} variant="primary" onClick={() => setModalShow(true)}>
+        Créer un projet
+      </Button>
+      <PopupProject
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
             </div>         
           </Media>
           <Media body>
@@ -193,6 +222,7 @@ const Profile = () => {
             />
           </Media>
         </Media>
+        
         <div>
       <Card style={cardFriends}>
         <CardBody>
@@ -229,17 +259,69 @@ const Profile = () => {
       </Card>
     </div>
     </div>
+    
       <h2 style={titleProject}>Mes projets</h2>
-      <CardProject />
-      
-      <PopupProject />
-      <Button style={styleButton} variant="primary" onClick={() => setModalShow(true)}>
-        Créer un projet
-      </Button>
-      <PopupProject
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <CardDeck style={cardgroup}>
+      <Card style={cardbodycss}>
+        <CardBody>
+          <CardTitle tag="h5">Figurines 3D</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            Electronique
+          </CardSubtitle>
+          <CardText>
+            Le but de ce projet est de concevoir en 3D sur un logiciel des figurines 
+            d'animaux, puis de les imprimer en utilisant l'imprimante 3D.
+          </CardText>
+          <Button style={styleButtonProject}>Détails</Button>
+        </CardBody>
+      </Card>
+      <Card style={cardbodycss}>
+        <CardBody>
+          <CardTitle tag="h5">Formation logiciel 3D</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            Electronique
+          </CardSubtitle>
+          <CardText>
+            Ce projet de formation doit m'apprendre à maîtiser le logiciel Blender, qui permet
+            de réaliser des modèles 3D, ce qui va m'aider pour mes projets de création.
+          </CardText>
+          <Button style={styleButtonProject}>Détails</Button>
+        </CardBody>
+      </Card>
+      <Card style={cardbodycss}>
+        <CardBody>
+          <CardTitle tag="h5">Formation logiciel 2D</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            Electronique, Machines
+          </CardSubtitle>
+          <CardText>
+            Ce projet de formation doit m'apprendre à maîtiser le logiciel Blender, qui permet
+            de réaliser des modèles 3D, ce qui va m'aider pour mes projets de création.
+          </CardText>
+          <Button style={styleButtonProject}>Détails</Button>
+        </CardBody>
+      </Card>
+    </CardDeck>
+
+    <h2 style={titleProject}>Découvrir d'autres projets <span role="img" aria-label="rocket">🚀</span></h2>
+    <CardDeck style={cardgroup}>
+      {dbprojects.map((project)=>(
+        <Card style={cardbodycss}>
+        <CardBody>
+          <CardTitle tag="h5">{project.name}</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            {project.area.join(' ')}
+          </CardSubtitle>
+          <CardText>
+            {project.description}
+            - Catégorie: {project.category}
+          </CardText>
+          <Button style={styleButtonProject}>Détails</Button>
+        </CardBody>
+      </Card>
+      ))}
+      </CardDeck>
+    
       <Footer/>
     </div>
   )
