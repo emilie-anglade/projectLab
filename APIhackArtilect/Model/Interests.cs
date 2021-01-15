@@ -18,5 +18,6 @@ namespace APIhackArtilect.Model
         public bool Robotique { get; set; }
         public bool Architecture { get; set; }
         public bool Media { get; set; }
+        public bool CosplayLab { get; set; }
     }
 }
