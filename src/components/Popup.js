@@ -57,7 +57,8 @@ const [buttonColor1, buttonColorClicked1] = useState({
 
   const flexyCheckbox = {
     display: "flex",
-    justifyContent: "space-evenly"
+    justifyContent: "space-evenly",
+    flexWrap: "wrap"
   }
 
     return (
@@ -112,26 +113,82 @@ const [buttonColor1, buttonColorClicked1] = useState({
             Domaine(s) du projet : 
             <div style={flexyCheckbox}>
             <Checkbox
-              value="Electronique"
-              label="Electronique"
-              id="1"
-              name="skillsArea"
-              onChange={handleCheckElement}
-            />
-            <Checkbox
-              value="Biologie"
-              label="Biologie"
-              id="2"
-              name="skillsArea"
-              onChange={handleCheckElement}
-            />
-            <Checkbox
-              value="Robotique"
-              label="Robotique"
-              id="3"
-              name="skillsArea"
-              onChange={handleCheckElement}
-            />
+            value="Electronique"
+            label="Electronique"
+            id="1"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Biologie"
+            label="Biologie"
+            id="2"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Robotique"
+            label="Robotique"
+            id="3"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Drone"
+            label="Drone"
+            id="4"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Couture"
+            label="Couture"
+            id="5"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Design"
+            label="Design"
+            id="6"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Machines"
+            label="Machines"
+            id="7"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Musique"
+            label="Musique"
+            id="8"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Architecture"
+            label="Architecture"
+            id="9"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Media"
+            label="Media"
+            id="10"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
+          <Checkbox
+            value="Cosplay"
+            label="Cosplay"
+            id="11"
+            name="skillsArea"
+            onChange={handleCheckElement}
+          />
             </div>
 
             <br/>
