@@ -5,7 +5,7 @@ const Footer = (props) => {
     const footer = {
         backgroundColor: "#5a6268",
         paddingTop: "2em",
-        paddingBottom: "2em",
+        paddingBottom: "1em",
         position: "absolute",
         bottom: "0",
         width: "100%"
