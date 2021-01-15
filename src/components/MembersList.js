@@ -41,7 +41,7 @@ class MembersList extends React.Component {
       <div>
       <CardDeck style = {cardDeck}>
       <Card>
-        <CardImg top width="100%" src="/assets/256x186.svg" alt="Card image cap" />
+        <CardImg top width="100%" src="/img/doesnotexist.jpeg" alt="Card image cap" />
         <CardBody>
           <CardTitle tag="h5">{makers.map(maker => maker.name)}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">Compétences:</CardSubtitle>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Button } from "reactstrap";
+import logo from "./img/proje-lab.svg";
+import collab from './img/collab.svg';
 
 const Home = () => {
 
@@ -39,7 +41,7 @@ const Home = () => {
 
   return (
     <div style={home}>
-      <h1 style={title}>Welcome to ProjectLab</h1>
+      <h1 style={title}><img src={logo} alt="logo" /></h1>
       <section style={flex}>
       <Link style={link} to="/signup">
        <Button style={buttonHome}>Inscription</Button>

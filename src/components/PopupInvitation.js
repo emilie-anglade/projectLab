@@ -3,10 +3,6 @@ import { Modal } from 'react-bootstrap';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-
-
-
-
   const = {
       "background-color": "#6c757d",
       color: "white"
@@ -27,7 +23,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
     <div>
       <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}></ModalHeader>
         <ModalBody>
           Samson Corbières souahite te rencontrer ! 
         </ModalBody>
