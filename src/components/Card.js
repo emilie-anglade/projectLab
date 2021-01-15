@@ -28,18 +28,19 @@ const CardProject = (props) => {
     float: "right",
     backgroundColor: "#33658A"
   }
+  const {name, area, description} = this.props;
 
   return (
+    
     <CardDeck style={cardgroup}>
       <Card style={cardbodycss}>
         <CardBody>
-          <CardTitle tag="h5">Mini voiture</CardTitle>
+          <CardTitle tag="h5">{name}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
-            Electronique, Robotique
+            {area.join(' ')}
           </CardSubtitle>
           <CardText>
-            Le projet est de concevoir en 3D une mini-voiture, imprimer les composants, puis la 
-            rendre capable de rouler avec un petit moteur, et de pouvoir la piloter à distance.
+            {description}
           </CardText>
           <Button style={styleButton}>Détails</Button>
         </CardBody>
