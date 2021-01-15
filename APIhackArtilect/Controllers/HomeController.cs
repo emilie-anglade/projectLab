@@ -32,22 +32,13 @@ namespace APIhackArtilect.Controllers
         }
 
         //crée un nouveau profile
-        /*[HttpPost]
+        [HttpPost]
         [Route("/NewProfile")]
-        public void CreateProfile(Members inputData)
+        public void CreateProfile(Members newMember)
         {
-            Members newMember = new Members();
-            newMember.UserName = inputData.UserName;
-            newMember.Mail = inputData.Mail;
-            newMember.Skills = inputData.Skills;
-            newMember.Interests = inputData.Interests;
-            newMember.DreamProject = inputData.DreamProject;
-
-            
             _context.Members.Add(newMember);
             _context.SaveChanges();
         }
-*/
         //retourne les infos d'un membre
         [Route("/{idUser}")]
         public Members GetMember(int idUser)
