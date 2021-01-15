@@ -25,7 +25,8 @@ const CardProject = (props) => {
   };
 
   const styleButton = {
-    float: "right"
+    float: "right",
+    backgroundColor: "#33658A"
   }
 
   return (

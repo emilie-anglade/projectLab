@@ -30,7 +30,8 @@ const Home = () => {
   const buttonHome = {
     marginTop: "4em",
     marginBottom: "4em",
-    width: "16em"
+    width: "16em",
+    backgroundColor: "#33658A"
   }
 
   const flex = {

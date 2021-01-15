@@ -37,7 +37,8 @@ const Profile = () => {
 
   const styleButton = {
     margin: "3em",
-    float: "right"
+    float: "right",
+    backgroundColor: "#33658A"
   }
   const avatarContainer = {
     display: 'flex',
@@ -86,7 +87,8 @@ const Profile = () => {
   const plus = {
     marginTop: "1em",
     textAlign: "center",
-    marginLeft: "9em"
+    marginLeft: "9em",
+    backgroundColor: "#33658A"
   }
 
   const con = {
@@ -96,7 +98,8 @@ const Profile = () => {
 
   const flute = {
     marginRight: "1em",
-    marginTop: "1em"
+    marginTop: "1em",
+    backgroundColor: "#33658A"
   }
 
   return (
